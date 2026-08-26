@@ -1,0 +1,16 @@
+# Secrets/credentials
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Temporary/editor files
+*~
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local machine-only files
+.local-only/
