@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell
 
 PanelWindow {
+	id: barWindow
+
 	required property var modelData
 
 	screen: modelData
@@ -20,6 +22,8 @@ PanelWindow {
 		anchors.fill: parent
 
 		Workspaces {
+			targetScreen: barWindow.screen
+
 			anchors {
 				left: parent.left
 				leftMargin: 12

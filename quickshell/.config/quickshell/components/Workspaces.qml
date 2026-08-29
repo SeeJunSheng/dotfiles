@@ -2,6 +2,11 @@ import QtQuick
 import Quickshell.Hyprland
 
 Row {
+	id: workspaceRow
+
+	required property var targetScreen
+	readonly property var targetMonitor: Hyprland.monitorFor(targetScreen)
+
 	spacing: 8
 
 	Repeater {
@@ -11,6 +16,7 @@ Row {
 			required property var modelData
 
 			visible: modelData.id > 0
+				&& modelData.monitor === workspaceRow.targetMonitor
 
 			width: workspaceText.implicitWidth + 16
 			height: 24
