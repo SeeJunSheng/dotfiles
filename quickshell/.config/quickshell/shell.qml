@@ -1,3 +1,5 @@
+//@ pragma IconTheme Adwaita
+
 import Quickshell
 import "components" as Components
 

@@ -44,6 +44,7 @@ PanelWindow {
 				verticalCenter: parent.verticalCenter
 			}
 
+			Tray {}
 			NetworkStatus {}
 			BluetoothStatus {}
 			Audio {}
