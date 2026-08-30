@@ -11,6 +11,16 @@ Row {
 		IconImage {
 			source: modelData.icon
 			implicitSize: 18
+
+			MouseArea {
+				anchors.fill: parent
+
+				cursorShape: Qt.PointingHandCursor
+
+				onClicked: {
+					modelData.activate()
+				}
+			}
 		}
 	}
 }
