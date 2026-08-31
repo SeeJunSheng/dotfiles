@@ -1,3 +1,7 @@
+-- Preserve file identity so filesystem watchers detect writes reliably
+vim.opt.backupcopy = "yes"
+
+-- QML LSP completion
 vim.lsp.enable("qmlls")
 
 vim.opt.completeopt:append({
@@ -15,17 +19,17 @@ local function enable_lsp_completion(event)
 		return
 	end
 
-	local triggerCharacters = {}
+	local trigger_characters = {}
 
-	for charCode = 33, 126 do
+	for char_code = 33, 126 do
 		table.insert(
-			triggerCharacters,
-			string.char(charCode)
+			trigger_characters,
+			string.char(char_code)
 		)
 	end
 
 	client.server_capabilities.completionProvider.triggerCharacters =
-		triggerCharacters
+		trigger_characters
 
 	vim.lsp.completion.enable(
 		true,
