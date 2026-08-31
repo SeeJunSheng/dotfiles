@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import "../services" as Services
 
 PanelWindow {
 	id: barWindow
@@ -8,7 +9,7 @@ PanelWindow {
 
 	screen: modelData
 
-	implicitHeight: 36
+	implicitHeight: Services.Settings.barHeight
 
 	color: "#202020"
 
