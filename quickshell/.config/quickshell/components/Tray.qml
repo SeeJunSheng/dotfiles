@@ -2,9 +2,10 @@ import QtQuick
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
+import "../services" as Services
 
 Row {
-	spacing: 6
+	spacing: Services.Settings.traySpacing
 
 	Repeater {
 		model: SystemTray.items
@@ -13,7 +14,7 @@ Row {
 			id: trayIcon
 
 			source: modelData.icon
-			implicitSize: 18
+			implicitSize: Services.Settings.trayIconSize
 
 			QsMenuAnchor {
 				id: trayMenu

@@ -1,8 +1,9 @@
 import QtQuick
 import Quickshell.Networking
+import "../services" as Services
 
 Row {
-	spacing: 4
+	spacing: Services.Settings.statusSpacing
 
 	Repeater {
 		model: Networking.devices
@@ -13,7 +14,7 @@ Row {
 			visible: modelData.connected
 
 			text: DeviceType.toString(modelData.type)
-			color: "white"
+			color: Services.Settings.appearanceTextColor
 		}
 	}
 }

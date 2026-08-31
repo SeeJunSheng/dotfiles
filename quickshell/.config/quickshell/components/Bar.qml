@@ -11,7 +11,7 @@ PanelWindow {
 
 	implicitHeight: Services.Settings.barHeight
 
-	color: "#202020"
+	color: Services.Settings.barBackgroundColor
 
 	anchors {
 		top: true
@@ -27,7 +27,7 @@ PanelWindow {
 
 			anchors {
 				left: parent.left
-				leftMargin: 12
+				leftMargin: Services.Settings.barOuterMargin
 				verticalCenter: parent.verticalCenter
 			}
 		}
@@ -37,11 +37,11 @@ PanelWindow {
 		}
 
 		Row {
-			spacing: 12
+			spacing: Services.Settings.barComponentSpacing
 
 			anchors {
 				right: parent.right
-				rightMargin: 12
+				rightMargin: Services.Settings.barOuterMargin
 				verticalCenter: parent.verticalCenter
 			}
 

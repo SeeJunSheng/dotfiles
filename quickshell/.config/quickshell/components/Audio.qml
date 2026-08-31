@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Services.Pipewire
+import "../services" as Services
 
 Item {
 	readonly property var sink: Pipewire.defaultAudioSink
@@ -16,11 +17,11 @@ Item {
 
 		text: sink && sink.audio
 			? sink.audio.muted
-				? "MUTE"
+				? Services.Settings.audioMutedLabel
 				: Math.round(sink.audio.volume * 100) + "%"
-			: "--"
+			: Services.Settings.audioUnavailableLabel
 
-		color: "white"
+		color: Services.Settings.appearanceTextColor
 	}
 
 	MouseArea {
@@ -39,7 +40,9 @@ Item {
 				return
 			}
 
-			const step = wheel.angleDelta.y > 0 ? 0.05 : -0.05
+			const step = wheel.angleDelta.y > 0
+				? Services.Settings.audioVolumeStep
+				: -Services.Settings.audioVolumeStep
 
 			sink.audio.volume = Math.max(
 				0,

@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Hyprland
+import "../services" as Services
 
 Row {
 	id: workspaceRow
@@ -7,7 +8,7 @@ Row {
 	required property var targetScreen
 	readonly property var targetMonitor: Hyprland.monitorFor(targetScreen)
 
-	spacing: 8
+	spacing: Services.Settings.workspaceSpacing
 
 	Repeater {
 		model: Hyprland.workspaces
@@ -18,8 +19,10 @@ Row {
 			visible: modelData.id > 0
 				&& modelData.monitor === workspaceRow.targetMonitor
 
-			width: workspaceText.implicitWidth + 16
-			height: 24
+			width: workspaceText.implicitWidth
+				+ Services.Settings.workspaceHorizontalPadding * 2
+
+			height: Services.Settings.workspaceHeight
 
 			Text {
 				id: workspaceText
@@ -28,10 +31,10 @@ Row {
 
 				text: modelData.name
 				color: modelData.focused
-					? "white"
+					? Services.Settings.workspaceFocusedColor
 					: modelData.active
-						? "#bbbbbb"
-						: "#666666"
+						? Services.Settings.workspaceActiveColor
+						: Services.Settings.workspaceInactiveColor
 			}
 
 			MouseArea {

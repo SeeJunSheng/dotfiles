@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import "../services" as Services
 
 Item {
 	implicitWidth: clockText.implicitWidth
@@ -14,7 +15,10 @@ Item {
 		id: clockText
 		anchors.centerIn: parent
 
-		text: Qt.formatDateTime(clock.date, "hh:mm")
-		color: "white"
+		text: Qt.formatDateTime(
+			clock.date,
+			Services.Settings.clockFormat
+		)
+		color: Services.Settings.appearanceTextColor
 	}
 }

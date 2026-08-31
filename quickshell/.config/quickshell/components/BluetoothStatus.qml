@@ -1,21 +1,22 @@
 import QtQuick
 import Quickshell.Bluetooth
+import "../services" as Services
 
 Row {
 	id: bluetoothRow
 
 	readonly property var adapter: Bluetooth.defaultAdapter
 
-	spacing: 4
+	spacing: Services.Settings.statusSpacing
 
 	Text {
 		text: bluetoothRow.adapter
 			? bluetoothRow.adapter.enabled
-				? "BT"
-				: "BT OFF"
-			: "NO BT"
+				? Services.Settings.bluetoothEnabledLabel
+				: Services.Settings.bluetoothDisabledLabel
+			: Services.Settings.bluetoothUnavailableLabel
 
-		color: "white"
+		color: Services.Settings.appearanceTextColor
 	}
 
 	Repeater {
@@ -27,7 +28,7 @@ Row {
 			visible: modelData.connected
 
 			text: modelData.name
-			color: "white"
+			color: Services.Settings.appearanceTextColor
 		}
 	}
 }

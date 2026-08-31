@@ -2,8 +2,49 @@
 	"schemaVersion": 1,
 
 	"quickshell": {
+		"appearance": {
+			"textColor": "white"
+		},
+
 		"bar": {
-			"height": 36
+			"height": 36,
+			"backgroundColor": "#202020",
+			"outerMargin": 12,
+			"componentSpacing": 12
+		},
+
+		"tray": {
+			"spacing": 6,
+			"iconSize": 18
+		},
+
+		"workspaces": {
+			"spacing": 8,
+			"horizontalPadding": 8,
+			"height": 24,
+			"focusedColor": "white",
+			"activeColor": "#bbbbbb",
+			"inactiveColor": "#666666"
+		},
+
+		"audio": {
+			"volumeStep": 0.05,
+			"mutedLabel": "MUTE",
+			"unavailableLabel": "--"
+		},
+
+		"clock": {
+			"format": "hh:mm"
+		},
+
+		"status": {
+			"spacing": 4
+		},
+
+		"bluetooth": {
+			"enabledLabel": "BT",
+			"disabledLabel": "BT OFF",
+			"unavailableLabel": "NO BT"
 		}
 	}
 }
