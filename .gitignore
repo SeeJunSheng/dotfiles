@@ -14,3 +14,6 @@
 
 # Local machine-only files
 .local-only/
+
+# Quickshell LSP metadata
+quickshell/.config/quickshell/.qmlls.ini
