@@ -1,7 +1,9 @@
-local config = require("config")
+local settings = require("settings")
 
 hl.bind(
-	config.mod .. " + Q",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.closeWindow,
 	hl.dsp.window.close({}),
 	{
 		description = "Close active window",
@@ -9,7 +11,9 @@ hl.bind(
 )
 
 hl.bind(
-	config.mod .. " + F",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.fullscreen,
 	hl.dsp.window.fullscreen({
 		mode = "fullscreen",
 		action = "toggle",
@@ -20,7 +24,9 @@ hl.bind(
 )
 
 hl.bind(
-	config.mod .. " + M",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.maximize,
 	hl.dsp.window.fullscreen({
 		mode = "maximized",
 		action = "toggle",
@@ -31,7 +37,9 @@ hl.bind(
 )
 
 hl.bind(
-	config.mod .. " + SHIFT + E",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.exit,
 	hl.dsp.exit(),
 	{
 		description = "Exit Hyprland",

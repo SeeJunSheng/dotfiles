@@ -1,7 +1,9 @@
-local config = require("config")
+local settings = require("settings")
 
 hl.bind(
-	config.mod .. " + L",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.lock,
 	hl.dsp.exec_cmd("hyprlock"),
 	{
 		description = "Lock session",

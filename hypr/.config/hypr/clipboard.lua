@@ -1,7 +1,9 @@
-local config = require("config")
+local settings = require("settings")
 
 hl.bind(
-	config.mod .. " + V",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.clipboard,
 	hl.dsp.exec_cmd(
 		"cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 	),

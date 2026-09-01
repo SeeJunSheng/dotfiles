@@ -1,7 +1,9 @@
-local config = require("config")
+local settings = require("settings")
 
 hl.bind(
-	config.mod .. " + D",
+	settings.hyprland.modifier
+		.. " + "
+		.. settings.hyprland.keybindings.launcher,
 	hl.dsp.exec_cmd("rofi -show drun"),
 	{
 		description = "Open application launcher",
