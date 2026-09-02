@@ -6,6 +6,8 @@ import "../services" as Services
 PopupWindow {
 	id: root
 
+	readonly property var adapter: Bluetooth.defaultAdapter
+
 	implicitWidth: 300
 	implicitHeight: content.implicitHeight + 24
 
@@ -29,14 +31,43 @@ PopupWindow {
 
 			spacing: 12
 
-			Text {
-				text: Bluetooth.defaultAdapter
-					? Bluetooth.defaultAdapter.enabled
-						? "Bluetooth ON"
-						: "Bluetooth OFF"
-					: "Bluetooth unavailable"
+			Row {
+				width: content.width
+				spacing: 12
 
-				color: Services.Settings.appearanceTextColor
+				Text {
+					width: parent.width - powerText.width - parent.spacing
+
+					text: root.adapter
+						? root.adapter.enabled
+							? "Bluetooth ON"
+							: "Bluetooth OFF"
+						: "Bluetooth unavailable"
+
+					color: Services.Settings.appearanceTextColor
+				}
+
+				Text {
+					id: powerText
+
+					visible: root.adapter !== null
+
+					text: root.adapter && root.adapter.enabled
+						? "Turn Off"
+						: "Turn On"
+
+					color: Services.Settings.appearanceTextColor
+
+					MouseArea {
+						anchors.fill: parent
+
+						onClicked: {
+							if (root.adapter) {
+								root.adapter.enabled = !root.adapter.enabled
+							}
+						}
+					}
+				}
 			}
 
 			Repeater {
