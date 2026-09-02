@@ -8,11 +8,35 @@ PopupWindow {
 
 	readonly property var adapter: Bluetooth.defaultAdapter
 
-	implicitWidth: 300
-	implicitHeight: content.implicitHeight + 24
+	implicitWidth: Services.Settings.bluetoothPopupWidth
+	implicitHeight: content.implicitHeight
+		+ Services.Settings.bluetoothPopupPadding * 2
 
 	visible: false
 	grabFocus: true
+
+	Timer {
+		id: scanTimer
+
+		interval: Services.Settings.bluetoothScanTimeoutMs
+		repeat: false
+
+		onTriggered: {
+			if (root.adapter && root.adapter.discovering) {
+				root.adapter.discovering = false
+			}
+		}
+	}
+
+	onVisibleChanged: {
+		if (!visible) {
+			scanTimer.stop()
+
+			if (root.adapter && root.adapter.discovering) {
+				root.adapter.discovering = false
+			}
+		}
+	}
 
 	Rectangle {
 		anchors.fill: parent
@@ -26,23 +50,23 @@ PopupWindow {
 				left: parent.left
 				right: parent.right
 				top: parent.top
-				margins: 12
+				margins: Services.Settings.bluetoothPopupPadding
 			}
 
-			spacing: 12
+			spacing: Services.Settings.bluetoothPopupSectionSpacing
 
 			Row {
 				width: content.width
-				spacing: 12
+				spacing: Services.Settings.bluetoothPopupRowSpacing
 
 				Text {
 					width: parent.width - powerText.width - parent.spacing
 
 					text: root.adapter
 						? root.adapter.enabled
-							? "Bluetooth ON"
-							: "Bluetooth OFF"
-						: "Bluetooth unavailable"
+							? Services.Settings.bluetoothPopupEnabledLabel
+							: Services.Settings.bluetoothPopupDisabledLabel
+						: Services.Settings.bluetoothPopupUnavailableLabel
 
 					color: Services.Settings.appearanceTextColor
 				}
@@ -53,8 +77,8 @@ PopupWindow {
 					visible: root.adapter !== null
 
 					text: root.adapter && root.adapter.enabled
-						? "Turn Off"
-						: "Turn On"
+						? Services.Settings.bluetoothTurnOffLabel
+						: Services.Settings.bluetoothTurnOnLabel
 
 					color: Services.Settings.appearanceTextColor
 
@@ -70,6 +94,48 @@ PopupWindow {
 				}
 			}
 
+			Row {
+				width: content.width
+				spacing: Services.Settings.bluetoothPopupRowSpacing
+
+				Text {
+					width: parent.width - scanText.width - parent.spacing
+
+					text: Services.Settings.bluetoothDevicesLabel
+					color: Services.Settings.appearanceTextColor
+				}
+
+				Text {
+					id: scanText
+
+					visible: root.adapter && root.adapter.enabled
+
+					text: root.adapter && root.adapter.discovering
+						? Services.Settings.bluetoothStopScanLabel
+						: Services.Settings.bluetoothScanLabel
+
+					color: Services.Settings.appearanceTextColor
+
+					MouseArea {
+						anchors.fill: parent
+
+						onClicked: {
+							if (!root.adapter || !root.adapter.enabled) {
+								return
+							}
+
+							if (root.adapter.discovering) {
+								root.adapter.discovering = false
+								scanTimer.stop()
+							} else {
+								root.adapter.discovering = true
+								scanTimer.restart()
+							}
+						}
+					}
+				}
+			}
+
 			Repeater {
 				model: Bluetooth.devices
 
@@ -77,7 +143,15 @@ PopupWindow {
 					required property var modelData
 
 					width: content.width
-					spacing: 12
+					spacing: Services.Settings.bluetoothPopupRowSpacing
+
+					visible: root.adapter
+						&& (
+							root.adapter.discovering
+							|| modelData.paired
+							|| modelData.trusted
+							|| modelData.connected
+						)
 
 					Text {
 						width: parent.width - actionText.width - parent.spacing
@@ -90,8 +164,10 @@ PopupWindow {
 						id: actionText
 
 						text: modelData.connected
-							? "Disconnect"
-							: "Connect"
+							? Services.Settings.bluetoothDisconnectLabel
+							: modelData.paired
+								? Services.Settings.bluetoothConnectLabel
+								: Services.Settings.bluetoothPairLabel
 
 						color: Services.Settings.appearanceTextColor
 
@@ -101,8 +177,10 @@ PopupWindow {
 							onClicked: {
 								if (modelData.connected) {
 									modelData.disconnect()
-								} else {
+								} else if (modelData.paired) {
 									modelData.connect()
+								} else {
+									modelData.pair()
 								}
 							}
 						}

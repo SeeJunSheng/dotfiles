@@ -73,6 +73,54 @@ Singleton {
 	readonly property string bluetoothUnavailableLabel:
 		settingsAdapter.quickshell.bluetooth.unavailableLabel
 
+	readonly property int bluetoothPopupWidth:
+		settingsAdapter.quickshell.bluetooth.popup.width
+
+	readonly property int bluetoothPopupPadding:
+		settingsAdapter.quickshell.bluetooth.popup.padding
+
+	readonly property int bluetoothPopupSectionSpacing:
+		settingsAdapter.quickshell.bluetooth.popup.sectionSpacing
+
+	readonly property int bluetoothPopupRowSpacing:
+		settingsAdapter.quickshell.bluetooth.popup.rowSpacing
+
+	readonly property int bluetoothScanTimeoutMs:
+		settingsAdapter.quickshell.bluetooth.popup.scanTimeoutMs
+
+	readonly property string bluetoothPopupEnabledLabel:
+		settingsAdapter.quickshell.bluetooth.popup.enabledLabel
+
+	readonly property string bluetoothPopupDisabledLabel:
+		settingsAdapter.quickshell.bluetooth.popup.disabledLabel
+
+	readonly property string bluetoothPopupUnavailableLabel:
+		settingsAdapter.quickshell.bluetooth.popup.unavailableLabel
+
+	readonly property string bluetoothTurnOnLabel:
+		settingsAdapter.quickshell.bluetooth.popup.turnOnLabel
+
+	readonly property string bluetoothTurnOffLabel:
+		settingsAdapter.quickshell.bluetooth.popup.turnOffLabel
+
+	readonly property string bluetoothDevicesLabel:
+		settingsAdapter.quickshell.bluetooth.popup.devicesLabel
+
+	readonly property string bluetoothScanLabel:
+		settingsAdapter.quickshell.bluetooth.popup.scanLabel
+
+	readonly property string bluetoothStopScanLabel:
+		settingsAdapter.quickshell.bluetooth.popup.stopScanLabel
+
+	readonly property string bluetoothConnectLabel:
+		settingsAdapter.quickshell.bluetooth.popup.connectLabel
+
+	readonly property string bluetoothDisconnectLabel:
+		settingsAdapter.quickshell.bluetooth.popup.disconnectLabel
+
+	readonly property string bluetoothPairLabel:
+		settingsAdapter.quickshell.bluetooth.popup.pairLabel
+
 	FileView {
 		id: settingsFile
 
@@ -128,9 +176,29 @@ Singleton {
 				}
 
 				property JsonObject bluetooth: JsonObject {
-					property string enabledLabel: "BT"
-					property string disabledLabel: "BT OFF"
-					property string unavailableLabel: "NO BT"
+					property string enabledLabel
+					property string disabledLabel
+					property string unavailableLabel
+
+					property JsonObject popup: JsonObject {
+						property int width
+						property int padding
+						property int sectionSpacing
+						property int rowSpacing
+						property int scanTimeoutMs
+
+						property string enabledLabel
+						property string disabledLabel
+						property string unavailableLabel
+						property string turnOnLabel
+						property string turnOffLabel
+						property string devicesLabel
+						property string scanLabel
+						property string stopScanLabel
+						property string connectLabel
+						property string disconnectLabel
+						property string pairLabel
+					}
 				}
 			}
 		}

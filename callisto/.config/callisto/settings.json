@@ -90,7 +90,27 @@
 		"bluetooth": {
 			"enabledLabel": "BT",
 			"disabledLabel": "BT OFF",
-			"unavailableLabel": "NO BT"
+			"unavailableLabel": "NO BT",
+
+			"popup": {
+				"width": 300,
+				"padding": 12,
+				"sectionSpacing": 12,
+				"rowSpacing": 12,
+				"scanTimeoutMs": 15000,
+
+				"enabledLabel": "Bluetooth ON",
+				"disabledLabel": "Bluetooth OFF",
+				"unavailableLabel": "Bluetooth unavailable",
+				"turnOnLabel": "Turn On",
+				"turnOffLabel": "Turn Off",
+				"devicesLabel": "Devices",
+				"scanLabel": "Scan",
+				"stopScanLabel": "Stop Scan",
+				"connectLabel": "Connect",
+				"disconnectLabel": "Disconnect",
+				"pairLabel": "Pair"
+			}
 		}
 	}
 }
