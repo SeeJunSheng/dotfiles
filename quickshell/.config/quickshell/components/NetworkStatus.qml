@@ -2,19 +2,42 @@ import QtQuick
 import Quickshell.Networking
 import "../services" as Services
 
-Row {
-	spacing: Services.Settings.statusSpacing
+Item {
+	id: root
 
-	Repeater {
-		model: Networking.devices
+	implicitWidth: networkRow.implicitWidth
+	implicitHeight: networkRow.implicitHeight
 
-		Text {
-			required property var modelData
+	Row {
+		id: networkRow
 
-			visible: modelData.connected
+		spacing: Services.Settings.statusSpacing
 
-			text: DeviceType.toString(modelData.type)
-			color: Services.Settings.appearanceTextColor
+		Repeater {
+			model: Networking.devices
+
+			Text {
+				required property var modelData
+
+				visible: modelData.connected
+
+				text: DeviceType.toString(modelData.type)
+				color: Services.Settings.appearanceTextColor
+			}
 		}
+	}
+
+	MouseArea {
+		anchors.fill: networkRow
+
+		onClicked: {
+			networkPopup.visible = !networkPopup.visible
+		}
+	}
+
+	NetworkPopup {
+		id: networkPopup
+
+		anchor.item: networkRow
 	}
 }
