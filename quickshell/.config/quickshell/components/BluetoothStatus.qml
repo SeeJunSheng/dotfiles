@@ -2,33 +2,54 @@ import QtQuick
 import Quickshell.Bluetooth
 import "../services" as Services
 
-Row {
-	id: bluetoothRow
+Item {
+	id: root
 
-	readonly property var adapter: Bluetooth.defaultAdapter
+	implicitWidth: bluetoothRow.implicitWidth
+	implicitHeight: bluetoothRow.implicitHeight
 
-	spacing: Services.Settings.statusSpacing
+	Row {
+		id: bluetoothRow
 
-	Text {
-		text: bluetoothRow.adapter
-			? bluetoothRow.adapter.enabled
-				? Services.Settings.bluetoothEnabledLabel
-				: Services.Settings.bluetoothDisabledLabel
-			: Services.Settings.bluetoothUnavailableLabel
+		readonly property var adapter: Bluetooth.defaultAdapter
 
-		color: Services.Settings.appearanceTextColor
-	}
-
-	Repeater {
-		model: Bluetooth.devices
+		spacing: Services.Settings.statusSpacing
 
 		Text {
-			required property var modelData
+			text: bluetoothRow.adapter
+				? bluetoothRow.adapter.enabled
+					? Services.Settings.bluetoothEnabledLabel
+					: Services.Settings.bluetoothDisabledLabel
+				: Services.Settings.bluetoothUnavailableLabel
 
-			visible: modelData.connected
-
-			text: modelData.name
 			color: Services.Settings.appearanceTextColor
 		}
+
+		Repeater {
+			model: Bluetooth.devices
+
+			Text {
+				required property var modelData
+
+				visible: modelData.connected
+
+				text: modelData.name
+				color: Services.Settings.appearanceTextColor
+			}
+		}
+	}
+
+	MouseArea {
+		anchors.fill: bluetoothRow
+
+		onClicked: {
+			bluetoothPopup.visible = !bluetoothPopup.visible
+		}
+	}
+
+	BluetoothPopup {
+		id: bluetoothPopup
+
+		anchor.item: bluetoothRow
 	}
 }
