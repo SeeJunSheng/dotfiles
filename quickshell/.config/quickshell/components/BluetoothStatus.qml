@@ -5,6 +5,8 @@ import "../services" as Services
 Item {
 	id: root
 
+	readonly property bool popupVisible: bluetoothPopup.visible
+
 	implicitWidth: bluetoothRow.implicitWidth
 	implicitHeight: bluetoothRow.implicitHeight
 

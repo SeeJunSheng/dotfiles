@@ -8,12 +8,18 @@ PanelWindow {
 	required property bool topEdge
 	required property bool leftEdge
 
-	readonly property int peekSize: 28
+	default property alias content: contentLayer.data
+
+	property bool holdOpen: false
+
+	readonly property int peekSize: 24
 	readonly property int expandedThickness: 64
 	readonly property int expandedLength: 260
 
 	readonly property bool expanded:
-		horizontalHover.hovered || verticalHover.hovered
+	horizontalHover.hovered
+	|| verticalHover.hovered
+	|| root.holdOpen
 
 	screen: modelData
 
@@ -116,5 +122,13 @@ PanelWindow {
 				easing.type: Easing.OutCubic
 			}
 		}
+	}
+
+	Item {
+		id: contentLayer
+
+		anchors.fill: parent
+
+		visible: root.expanded
 	}
 }
