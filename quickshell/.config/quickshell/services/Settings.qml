@@ -18,12 +18,36 @@ Singleton {
 
 	readonly property string barBackgroundColor:
 		settingsAdapter.quickshell.bar.backgroundColor
+	readonly property string panelBackgroundColor:
+		settingsAdapter.quickshell.panels.backgroundColor
 
 	readonly property int barOuterMargin:
 		settingsAdapter.quickshell.bar.outerMargin
+	readonly property int panelAnimationDurationMs:
+		settingsAdapter.quickshell.panels.animationDurationMs
 
 	readonly property int barComponentSpacing:
 		settingsAdapter.quickshell.bar.componentSpacing
+	readonly property int cornerPanelPeekSize:
+		settingsAdapter.quickshell.panels.corner.peekSize
+
+	readonly property int cornerPanelExpandedThickness:
+		settingsAdapter.quickshell.panels.corner.expandedThickness
+
+	readonly property int cornerPanelExpandedLength:
+		settingsAdapter.quickshell.panels.corner.expandedLength
+
+	readonly property int middlePanelPeekWidth:
+		settingsAdapter.quickshell.panels.middle.peekWidth
+
+	readonly property int middlePanelPeekHeight:
+		settingsAdapter.quickshell.panels.middle.peekHeight
+
+	readonly property int middlePanelExpandedWidth:
+		settingsAdapter.quickshell.panels.middle.expandedWidth
+
+	readonly property int middlePanelExpandedHeight:
+		settingsAdapter.quickshell.panels.middle.expandedHeight
 
 	readonly property int traySpacing:
 		settingsAdapter.quickshell.tray.spacing
@@ -145,6 +169,24 @@ Singleton {
 					property string backgroundColor: "#202020"
 					property int outerMargin: 12
 					property int componentSpacing: 12
+				}
+
+				property JsonObject panels: JsonObject {
+					property string backgroundColor: "#aa222222"
+					property int animationDurationMs: 180
+
+					property JsonObject corner: JsonObject {
+						property int peekSize: 24
+						property int expandedThickness: 64
+						property int expandedLength: 260
+					}
+
+					property JsonObject middle: JsonObject {
+						property int peekWidth: 80
+						property int peekHeight: 10
+						property int expandedWidth: 360
+						property int expandedHeight: 64
+					}
 				}
 
 				property JsonObject tray: JsonObject {

@@ -59,6 +59,24 @@
 			"componentSpacing": 12
 		},
 
+		"panels": {
+			"backgroundColor": "#aa222222",
+			"animationDurationMs": 180,
+
+			"corner": {
+				"peekSize": 24,
+				"expandedThickness": 64,
+				"expandedLength": 260
+			},
+
+			"middle": {
+				"peekWidth": 80,
+				"peekHeight": 10,
+				"expandedWidth": 360,
+				"expandedHeight": 64
+			}
+		},
+
 		"tray": {
 			"spacing": 6,
 			"iconSize": 18

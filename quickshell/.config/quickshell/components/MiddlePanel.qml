@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import "../services" as Services
 
 PanelWindow {
 	id: root
@@ -7,10 +8,14 @@ PanelWindow {
 	required property var modelData
 	required property bool topEdge
 
-	readonly property int peekWidth: 80
-	readonly property int peekHeight: 10
-	readonly property int expandedWidth: 360
-	readonly property int expandedHeight: 64
+	readonly property int peekWidth:
+		Services.Settings.middlePanelPeekWidth
+	readonly property int peekHeight:
+		Services.Settings.middlePanelPeekHeight
+	readonly property int expandedWidth:
+		Services.Settings.middlePanelExpandedWidth
+	readonly property int expandedHeight:
+		Services.Settings.middlePanelExpandedHeight
 
 	readonly property bool expanded: panelHover.hovered
 
@@ -62,7 +67,7 @@ PanelWindow {
 			: root.peekHeight
 
 		radius: height / 2
-		color: "#aa222222"
+		color: Services.Settings.panelBackgroundColor
 
 		HoverHandler {
 			id: panelHover
@@ -70,14 +75,14 @@ PanelWindow {
 
 		Behavior on width {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}
 
 		Behavior on height {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}

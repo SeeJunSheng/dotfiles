@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import "../services" as Services
 
 PanelWindow {
 	id: root
@@ -12,9 +13,12 @@ PanelWindow {
 
 	property bool holdOpen: false
 
-	readonly property int peekSize: 24
-	readonly property int expandedThickness: 64
-	readonly property int expandedLength: 260
+	readonly property int peekSize:
+		Services.Settings.cornerPanelPeekSize
+	readonly property int expandedThickness:
+		Services.Settings.cornerPanelExpandedThickness
+	readonly property int expandedLength:
+		Services.Settings.cornerPanelExpandedLength
 
 	readonly property bool expanded:
 	horizontalHover.hovered
@@ -63,7 +67,7 @@ PanelWindow {
 			: root.peekSize
 
 		radius: height / 2
-		color: "#aa222222"
+		color: Services.Settings.panelBackgroundColor
 
 		HoverHandler {
 			id: horizontalHover
@@ -71,14 +75,14 @@ PanelWindow {
 
 		Behavior on width {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}
 
 		Behavior on height {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}
@@ -103,7 +107,7 @@ PanelWindow {
 			: root.peekSize
 
 		radius: width / 2
-		color: "#aa222222"
+		color: Services.Settings.panelBackgroundColor
 
 		HoverHandler {
 			id: verticalHover
@@ -111,14 +115,14 @@ PanelWindow {
 
 		Behavior on width {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}
 
 		Behavior on height {
 			NumberAnimation {
-				duration: 180
+				duration: Services.Settings.panelAnimationDurationMs
 				easing.type: Easing.OutCubic
 			}
 		}
