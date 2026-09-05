@@ -34,10 +34,4 @@ ShellRoot {
 		model: Quickshell.screens
 		Components.BottomRightPanel {}
 	}
-
-	// Legacy bar kept for later reference:
-	// Variants {
-	//     model: Quickshell.screens
-	//     Components.Bar {}
-	// }
 }

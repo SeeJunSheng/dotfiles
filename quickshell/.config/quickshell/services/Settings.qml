@@ -13,23 +13,15 @@ Singleton {
 	readonly property string appearanceTextColor:
 		settingsAdapter.quickshell.appearance.textColor
 
-	readonly property int barHeight:
-		settingsAdapter.quickshell.bar.height
 	readonly property string iconFontFamily:
 		settingsAdapter.quickshell.icons.fontFamily
 
-	readonly property string barBackgroundColor:
-		settingsAdapter.quickshell.bar.backgroundColor
 	readonly property string panelBackgroundColor:
 		settingsAdapter.quickshell.panels.backgroundColor
 
-	readonly property int barOuterMargin:
-		settingsAdapter.quickshell.bar.outerMargin
 	readonly property int panelAnimationDurationMs:
 		settingsAdapter.quickshell.panels.animationDurationMs
 
-	readonly property int barComponentSpacing:
-		settingsAdapter.quickshell.bar.componentSpacing
 	readonly property int cornerPanelPeekSize:
 		settingsAdapter.quickshell.panels.corner.peekSize
 
@@ -167,13 +159,6 @@ Singleton {
 			property JsonObject quickshell: JsonObject {
 				property JsonObject appearance: JsonObject {
 					property string textColor: "white"
-				}
-
-				property JsonObject bar: JsonObject {
-					property int height: 36
-					property string backgroundColor: "#202020"
-					property int outerMargin: 12
-					property int componentSpacing: 12
 				}
 
 				property JsonObject icons: JsonObject {

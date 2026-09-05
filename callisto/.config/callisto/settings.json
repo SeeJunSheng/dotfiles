@@ -52,12 +52,6 @@
 			"textColor": "white"
 		},
 
-		"bar": {
-			"height": 36,
-			"backgroundColor": "#202020",
-			"outerMargin": 12,
-			"componentSpacing": 12
-		},
 		"icons": {
 			"fontFamily": "Input Nerd Font"
 		},
