@@ -15,6 +15,8 @@ Singleton {
 
 	readonly property int barHeight:
 		settingsAdapter.quickshell.bar.height
+	readonly property string iconFontFamily:
+		settingsAdapter.quickshell.icons.fontFamily
 
 	readonly property string barBackgroundColor:
 		settingsAdapter.quickshell.bar.backgroundColor
@@ -88,14 +90,14 @@ Singleton {
 	readonly property int statusSpacing:
 		settingsAdapter.quickshell.status.spacing
 
-	readonly property string bluetoothEnabledLabel:
-		settingsAdapter.quickshell.bluetooth.enabledLabel
+	readonly property string bluetoothIcon:
+		settingsAdapter.quickshell.bluetooth.icon
 
-	readonly property string bluetoothDisabledLabel:
-		settingsAdapter.quickshell.bluetooth.disabledLabel
+	readonly property int bluetoothIconSize:
+		settingsAdapter.quickshell.bluetooth.iconSize
 
-	readonly property string bluetoothUnavailableLabel:
-		settingsAdapter.quickshell.bluetooth.unavailableLabel
+	readonly property real bluetoothDisabledOpacity:
+		settingsAdapter.quickshell.bluetooth.disabledOpacity
 
 	readonly property int bluetoothPopupWidth:
 		settingsAdapter.quickshell.bluetooth.popup.width
@@ -109,8 +111,11 @@ Singleton {
 	readonly property int bluetoothPopupRowSpacing:
 		settingsAdapter.quickshell.bluetooth.popup.rowSpacing
 
-	readonly property int bluetoothScanTimeoutMs:
+	readonly property int bluetoothPopupScanTimeoutMs:
 		settingsAdapter.quickshell.bluetooth.popup.scanTimeoutMs
+
+	readonly property string bluetoothPopupBackgroundColor:
+		settingsAdapter.quickshell.bluetooth.popup.backgroundColor
 
 	readonly property string bluetoothPopupEnabledLabel:
 		settingsAdapter.quickshell.bluetooth.popup.enabledLabel
@@ -171,6 +176,10 @@ Singleton {
 					property int componentSpacing: 12
 				}
 
+				property JsonObject icons: JsonObject {
+					property string fontFamily: "Input Nerd Font"
+				}
+
 				property JsonObject panels: JsonObject {
 					property string backgroundColor: "#aa222222"
 					property int animationDurationMs: 180
@@ -218,9 +227,9 @@ Singleton {
 				}
 
 				property JsonObject bluetooth: JsonObject {
-					property string enabledLabel
-					property string disabledLabel
-					property string unavailableLabel
+					property string icon: ""
+					property int iconSize: 22
+					property real disabledOpacity: 0.4
 
 					property JsonObject popup: JsonObject {
 						property int width
@@ -229,6 +238,7 @@ Singleton {
 						property int rowSpacing
 						property int scanTimeoutMs
 
+						property string backgroundColor
 						property string enabledLabel
 						property string disabledLabel
 						property string unavailableLabel

@@ -5,44 +5,28 @@ import "../services" as Services
 Item {
 	id: root
 
+	readonly property var adapter: Bluetooth.defaultAdapter
 	readonly property bool popupVisible: bluetoothPopup.visible
 
-	implicitWidth: bluetoothRow.implicitWidth
-	implicitHeight: bluetoothRow.implicitHeight
+	implicitWidth: bluetoothIcon.implicitWidth
+	implicitHeight: bluetoothIcon.implicitHeight
 
-	Row {
-		id: bluetoothRow
+	Text {
+		id: bluetoothIcon
 
-		readonly property var adapter: Bluetooth.defaultAdapter
+		text: Services.Settings.bluetoothIcon
 
-		spacing: Services.Settings.statusSpacing
+		font.family: Services.Settings.iconFontFamily
+		font.pixelSize: Services.Settings.bluetoothIconSize
 
-		Text {
-			text: bluetoothRow.adapter
-				? bluetoothRow.adapter.enabled
-					? Services.Settings.bluetoothEnabledLabel
-					: Services.Settings.bluetoothDisabledLabel
-				: Services.Settings.bluetoothUnavailableLabel
-
-			color: Services.Settings.appearanceTextColor
-		}
-
-		Repeater {
-			model: Bluetooth.devices
-
-			Text {
-				required property var modelData
-
-				visible: modelData.connected
-
-				text: modelData.name
-				color: Services.Settings.appearanceTextColor
-			}
-		}
+		color: Services.Settings.appearanceTextColor
+		opacity: root.adapter && root.adapter.enabled
+			? 1.0
+			: Services.Settings.bluetoothDisabledOpacity
 	}
 
 	MouseArea {
-		anchors.fill: bluetoothRow
+		anchors.fill: bluetoothIcon
 
 		onClicked: {
 			bluetoothPopup.visible = !bluetoothPopup.visible
@@ -52,6 +36,6 @@ Item {
 	BluetoothPopup {
 		id: bluetoothPopup
 
-		anchor.item: bluetoothRow
+		anchor.item: bluetoothIcon
 	}
 }

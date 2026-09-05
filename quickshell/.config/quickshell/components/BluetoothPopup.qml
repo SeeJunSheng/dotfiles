@@ -18,7 +18,7 @@ PopupWindow {
 	Timer {
 		id: scanTimer
 
-		interval: Services.Settings.bluetoothScanTimeoutMs
+		interval: Services.Settings.bluetoothPopupScanTimeoutMs
 		repeat: false
 
 		onTriggered: {
@@ -41,7 +41,7 @@ PopupWindow {
 	Rectangle {
 		anchors.fill: parent
 
-		color: Services.Settings.barBackgroundColor
+		color: Services.Settings.bluetoothPopupBackgroundColor
 
 		Column {
 			id: content

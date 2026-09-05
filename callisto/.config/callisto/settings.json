@@ -58,6 +58,9 @@
 			"outerMargin": 12,
 			"componentSpacing": 12
 		},
+		"icons": {
+			"fontFamily": "Input Nerd Font"
+		},
 
 		"panels": {
 			"backgroundColor": "#aa222222",
@@ -106,9 +109,9 @@
 		},
 
 		"bluetooth": {
-			"enabledLabel": "BT",
-			"disabledLabel": "BT OFF",
-			"unavailableLabel": "NO BT",
+			"icon": "",
+			"iconSize": 22,
+			"disabledOpacity": 0.4,
 
 			"popup": {
 				"width": 300,
@@ -117,6 +120,7 @@
 				"rowSpacing": 12,
 				"scanTimeoutMs": 15000,
 
+				"backgroundColor": "#202020",
 				"enabledLabel": "Bluetooth ON",
 				"disabledLabel": "Bluetooth OFF",
 				"unavailableLabel": "Bluetooth unavailable",
