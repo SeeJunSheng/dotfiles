@@ -6,7 +6,9 @@ CornerPanel {
 	topEdge: true
 	leftEdge: false
 
-	holdOpen: bluetoothStatus.popupVisible
+	holdOpen:
+		wifiStatus.popupVisible
+		|| bluetoothStatus.popupVisible
 
 	BluetoothStatus {
 		id: bluetoothStatus
@@ -17,6 +19,18 @@ CornerPanel {
 
 			topMargin: 20
 			rightMargin: root.expandedThickness + 12
+		}
+	}
+
+	WifiStatus {
+		id: wifiStatus
+
+		anchors {
+			top: parent.top
+			right: bluetoothStatus.left
+
+			topMargin: 20
+			rightMargin: 16
 		}
 	}
 }

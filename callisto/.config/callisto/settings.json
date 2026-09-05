@@ -102,6 +102,25 @@
 			"spacing": 4
 		},
 
+		"wifi": {
+			"icon": "",
+			"iconSize": 22,
+			"disabledOpacity": 0.4,
+
+			"popup": {
+				"width": 300,
+				"padding": 12,
+				"rowSpacing": 12,
+
+				"backgroundColor": "#202020",
+				"enabledLabel": "Wi-Fi ON",
+				"disabledLabel": "Wi-Fi OFF",
+				"unavailableLabel": "Wi-Fi unavailable",
+				"turnOnLabel": "Turn On",
+				"turnOffLabel": "Turn Off"
+			}
+		},
+
 		"bluetooth": {
 			"icon": "",
 			"iconSize": 22,

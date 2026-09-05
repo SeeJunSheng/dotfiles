@@ -82,6 +82,42 @@ Singleton {
 	readonly property int statusSpacing:
 		settingsAdapter.quickshell.status.spacing
 
+	readonly property string wifiIcon:
+		settingsAdapter.quickshell.wifi.icon
+
+	readonly property int wifiIconSize:
+		settingsAdapter.quickshell.wifi.iconSize
+
+	readonly property real wifiDisabledOpacity:
+		settingsAdapter.quickshell.wifi.disabledOpacity
+
+	readonly property int wifiPopupWidth:
+		settingsAdapter.quickshell.wifi.popup.width
+
+	readonly property int wifiPopupPadding:
+		settingsAdapter.quickshell.wifi.popup.padding
+
+	readonly property int wifiPopupRowSpacing:
+		settingsAdapter.quickshell.wifi.popup.rowSpacing
+
+	readonly property string wifiPopupBackgroundColor:
+		settingsAdapter.quickshell.wifi.popup.backgroundColor
+
+	readonly property string wifiPopupEnabledLabel:
+		settingsAdapter.quickshell.wifi.popup.enabledLabel
+
+	readonly property string wifiPopupDisabledLabel:
+		settingsAdapter.quickshell.wifi.popup.disabledLabel
+
+	readonly property string wifiPopupUnavailableLabel:
+		settingsAdapter.quickshell.wifi.popup.unavailableLabel
+
+	readonly property string wifiTurnOnLabel:
+		settingsAdapter.quickshell.wifi.popup.turnOnLabel
+
+	readonly property string wifiTurnOffLabel:
+		settingsAdapter.quickshell.wifi.popup.turnOffLabel
+
 	readonly property string bluetoothIcon:
 		settingsAdapter.quickshell.bluetooth.icon
 
@@ -209,6 +245,25 @@ Singleton {
 
 				property JsonObject status: JsonObject {
 					property int spacing: 4
+				}
+
+				property JsonObject wifi: JsonObject {
+					property string icon: ""
+					property int iconSize: 22
+					property real disabledOpacity: 0.4
+
+					property JsonObject popup: JsonObject {
+						property int width
+						property int padding
+						property int rowSpacing
+
+						property string backgroundColor
+						property string enabledLabel
+						property string disabledLabel
+						property string unavailableLabel
+						property string turnOnLabel
+						property string turnOffLabel
+					}
 				}
 
 				property JsonObject bluetooth: JsonObject {
