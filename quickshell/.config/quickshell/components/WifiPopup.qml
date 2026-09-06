@@ -6,12 +6,26 @@ import "../services" as Services
 PopupWindow {
 	id: root
 
+	readonly property var wifiDevice:
+		Networking.devices.values.find(device => device.type === DeviceType.Wifi)
+
 	implicitWidth: Services.Settings.wifiPopupWidth
 	implicitHeight: content.implicitHeight
 		+ Services.Settings.wifiPopupPadding * 2
 
 	visible: false
 	grabFocus: true
+
+	Binding {
+		target: root.wifiDevice
+		property: "scannerEnabled"
+
+		value: root.visible
+			&& Networking.wifiHardwareEnabled
+			&& Networking.wifiEnabled
+
+		when: root.wifiDevice !== null
+	}
 
 	Rectangle {
 		anchors.fill: parent
@@ -64,6 +78,19 @@ PopupWindow {
 							Networking.wifiEnabled = !Networking.wifiEnabled
 						}
 					}
+				}
+			}
+
+			Repeater {
+				model: root.wifiDevice
+					? root.wifiDevice.networks
+					: null
+
+				Text {
+					required property var modelData
+
+					text: modelData.name
+					color: Services.Settings.appearanceTextColor
 				}
 			}
 		}
