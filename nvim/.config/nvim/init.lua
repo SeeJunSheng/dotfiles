@@ -1,9 +1,6 @@
 -- Preserve file identity so filesystem watchers detect writes reliably
 vim.opt.backupcopy = "yes"
 
--- QML LSP completion
-vim.lsp.enable("qmlls")
-
 vim.opt.completeopt:append({
 	"menuone",
 	"noselect",
