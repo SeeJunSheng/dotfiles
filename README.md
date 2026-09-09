@@ -1,18 +1,20 @@
-# Callisto Dotfiles
+# Dotfiles
 
-Configuration files for my Arch Linux desktop and the development home of Callisto.
+Configuration files for my Arch Linux systems and the development home of Lightyear.
 
-Managed with GNU Stow
+Managed with GNU Stow.
 
 ## Packages
 
-- Bash
-- Neovim
-- Kitty
-- Hyprland
+* Bash
+* Fontconfig
+* Hyprland
+* Kitty
+* Lightyear
+* Neovim
 
-## Callisto
+## Lightyear
 
-Callisto v2 is being rebuilt from a clean architecture.
+Lightyear is a portable Quickshell-based desktop shell designed to adapt to the machine it runs on.
 
-The final Callisto v1 prototype is preserved by the `callisto-v1-final` Git tag.
+The final pre-Lightyear prototype is preserved by the `callisto-v1-final` Git tag.
