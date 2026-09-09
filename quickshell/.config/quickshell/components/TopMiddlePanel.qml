@@ -1,3 +1,0 @@
-MiddlePanel {
-	topEdge: true
-}
