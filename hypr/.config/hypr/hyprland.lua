@@ -135,9 +135,15 @@ hl.bind(
 -- Startup
 
 hl.on("hyprland.start", function()
+	hl.exec_cmd("systemctl --user start hyprland-session.target")
+	hl.exec_cmd("wl-paste --watch cliphist store")
+	hl.exec_cmd("qs -c lightyear")
 	hl.exec_cmd("fcitx5 -d")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("wl-paste --watch cliphist store")
-	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	hl.exec_cmd("qs -c lightyear")
+end)
+
+-- Shutdown
+
+hl.on("hyprland.shutdown", function()
+	os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
 end)
