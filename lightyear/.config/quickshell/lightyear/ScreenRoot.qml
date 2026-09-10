@@ -5,6 +5,10 @@ Scope {
 	required property var modelData
 	property string screenName: ""
 
+	Clock {
+		targetScreen: modelData
+	}
+
 	Component.onCompleted: {
 		screenName = modelData.name
 		console.log("Lightyear screen added:", screenName)
