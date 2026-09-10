@@ -5,8 +5,8 @@ PanelWindow {
 	required property var targetScreen
 
 	screen: targetScreen
-	implicitWidth: clockText.implicitWidth + 32
-	implicitHeight: clockText.implicitHeight + 16
+	implicitWidth: clockText.implicitWidth + Style.spacingMedium * 2
+	implicitHeight: clockText.implicitHeight + Style.spacingSmall * 2
 	color: "transparent"
 	aboveWindows: false
 	exclusionMode: ExclusionMode.Ignore
@@ -17,7 +17,7 @@ PanelWindow {
 	}
 
 	margins {
-		top: 32
+		top: Style.spacingLarge
 	}
 
 	SystemClock {
@@ -30,7 +30,7 @@ PanelWindow {
 
 		anchors.centerIn: parent
 		text: Qt.formatDateTime(clock.date, "HH:mm")
-		color: "white"
-		font.pixelSize: 32
+		color: Style.textPrimary
+		font.pixelSize: Style.clockFontSize
 	}
 }
