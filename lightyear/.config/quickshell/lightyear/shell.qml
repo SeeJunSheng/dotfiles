@@ -1,3 +1,5 @@
+//@ pragma DataDir $BASE/lightyear
+
 import Quickshell
 
 ShellRoot {
