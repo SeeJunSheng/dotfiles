@@ -34,6 +34,11 @@ Singleton {
 			? Settings.spacingLargeOverride
 			: spacingLargePreset
 
+	readonly property int clockTopMargin:
+		Settings.clockTopMarginOverride >= 0
+			? Settings.clockTopMarginOverride
+			: spacingLarge
+
 	readonly property int clockFontSize: 32
 	readonly property color textPrimary: "white"
 }

@@ -18,7 +18,7 @@ PanelWindow {
 	}
 
 	margins {
-		top: Style.spacingLarge
+		top: Style.clockTopMargin
 	}
 
 	SystemClock {
