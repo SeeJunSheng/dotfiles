@@ -39,6 +39,20 @@ Singleton {
 			? Settings.clock.topMargin
 			: spacingLarge
 
-	readonly property int clockFontSize: 32
+	readonly property int fontSizeDisplayPreset:
+		Settings.appearance.typography.scale === "small" ? 28 :
+		Settings.appearance.typography.scale === "large" ? 36 :
+		32
+
+	readonly property int fontSizeDisplay:
+		Settings.appearance.typography.large >= 0
+			? Settings.appearance.typography.large
+			: fontSizeDisplayPreset
+
+	readonly property int clockFontSize:
+		Settings.clock.fontSize >= 0
+			? Settings.clock.fontSize
+			: fontSizeDisplay
+
 	readonly property color textPrimary: "white"
 }

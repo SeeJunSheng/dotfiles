@@ -32,11 +32,17 @@ Singleton {
 					property int medium: -1
 					property int large: -1
 				}
+
+				property JsonObject typography: JsonObject {
+					property string scale: "normal"
+					property int display: -1
+				}
 			}
 
 			property JsonObject clock: JsonObject {
 				property bool enabled: true
 				property int topMargin: -1
+				property int fontSize: -1
 			}
 		}
 	}
