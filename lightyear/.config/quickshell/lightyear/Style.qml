@@ -45,8 +45,8 @@ Singleton {
 		32
 
 	readonly property int fontSizeDisplay:
-		Settings.appearance.typography.large >= 0
-			? Settings.appearance.typography.large
+		Settings.appearance.typography.display >= 0
+			? Settings.appearance.typography.display
 			: fontSizeDisplayPreset
 
 	readonly property int clockFontSize:
