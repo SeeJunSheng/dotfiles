@@ -6,6 +6,7 @@ import Quickshell.Io
 Singleton {
 	property alias clockEnabled: adapter.clockEnabled
 	property alias density: adapter.density
+	property alias spacingMediumOverride: adapter.spacingMediumOverride
 
 	FileView {
 		path: Quickshell.dataPath("settings.json")
@@ -25,6 +26,7 @@ Singleton {
 			property int version: 1
 			property bool clockEnabled: true
 			property string density: "comfortable"
+			property int spacingMediumOverride: -1
 		}
 	}
 }

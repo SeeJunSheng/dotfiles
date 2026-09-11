@@ -9,10 +9,15 @@ Singleton {
 		Settings.density === "spacious" ? 10 :
 		8
 
-	readonly property int spacingMedium:
+	readonly property int spacingMediumPreset:
 		Settings.density === "compact" ? 12 :
 		Settings.density === "spacious" ? 20 :
 		16
+
+	readonly property int spacingMedium:
+		Settings.spacingMediumOverride >= 0
+			? Settings.spacingMediumOverride
+			: spacingMediumPreset
 
 	readonly property int spacingLarge:
 		Settings.density === "compact" ? 24 :
