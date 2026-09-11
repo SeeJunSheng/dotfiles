@@ -4,14 +4,8 @@ import Quickshell
 import Quickshell.Io
 
 Singleton {
-	property alias density: adapter.density
-
-	property alias spacingSmallOverride: adapter.spacingSmallOverride
-	property alias spacingMediumOverride: adapter.spacingMediumOverride
-	property alias spacingLargeOverride: adapter.spacingLargeOverride
-
-	property alias clockEnabled: adapter.clockEnabled
-	property alias clockTopMarginOverride: adapter.clockTopMarginOverride
+	property alias appearance: adapter.appearance
+	property alias clock: adapter.clock
 
 	FileView {
 		path: Quickshell.dataPath("settings.json")
@@ -30,14 +24,20 @@ Singleton {
 
 			property int version: 1
 
-			property string density: "comfortable"
+			property JsonObject appearance: JsonObject {
+				property string density: "comfortable"
 
-			property int spacingSmallOverride: -1
-			property int spacingMediumOverride: -1
-			property int spacingLargeOverride: -1
+				property JsonObject spacing: JsonObject {
+					property int small: -1
+					property int medium: -1
+					property int large: -1
+				}
+			}
 
-			property bool clockEnabled: true
-			property int clockTopMarginOverride: -1
+			property JsonObject clock: JsonObject {
+				property bool enabled: true
+				property int topMargin: -1
+			}
 		}
 	}
 }

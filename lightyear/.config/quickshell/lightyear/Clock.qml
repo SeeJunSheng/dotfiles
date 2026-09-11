@@ -11,7 +11,7 @@ PanelWindow {
 	aboveWindows: false
 	exclusionMode: ExclusionMode.Ignore
 	focusable: false
-	visible: Settings.clockEnabled
+	visible: Settings.clock.enabled
 
 	anchors {
 		top: true

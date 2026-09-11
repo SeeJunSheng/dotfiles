@@ -5,38 +5,38 @@ import QtQuick
 
 Singleton {
 	readonly property int spacingSmallPreset:
-		Settings.density === "compact" ? 6 :
-		Settings.density === "spacious" ? 10 :
+		Settings.appearance.density === "compact" ? 6 :
+		Settings.appearance.density === "spacious" ? 10 :
 		8
 
 	readonly property int spacingSmall:
-		Settings.spacingSmallOverride >= 0
-			? Settings.spacingSmallOverride
+		Settings.appearance.spacing.small >= 0
+			? Settings.appearance.spacing.small
 			: spacingSmallPreset
 
 	readonly property int spacingMediumPreset:
-		Settings.density === "compact" ? 12 :
-		Settings.density === "spacious" ? 20 :
+		Settings.appearance.density === "compact" ? 12 :
+		Settings.appearance.density === "spacious" ? 20 :
 		16
 
 	readonly property int spacingMedium:
-		Settings.spacingMediumOverride >= 0
-			? Settings.spacingMediumOverride
+		Settings.appearance.spacing.medium >= 0
+			? Settings.appearance.spacing.medium
 			: spacingMediumPreset
 
 	readonly property int spacingLargePreset:
-		Settings.density === "compact" ? 24 :
-		Settings.density === "spacious" ? 40 :
+		Settings.appearance.density === "compact" ? 24 :
+		Settings.appearance.density === "spacious" ? 40 :
 		32
 
 	readonly property int spacingLarge:
-		Settings.spacingLargeOverride >= 0
-			? Settings.spacingLargeOverride
+		Settings.appearance.spacing.large >= 0
+			? Settings.appearance.spacing.large
 			: spacingLargePreset
 
 	readonly property int clockTopMargin:
-		Settings.clockTopMarginOverride >= 0
-			? Settings.clockTopMarginOverride
+		Settings.clock.topMargin >= 0
+			? Settings.clock.topMargin
 			: spacingLarge
 
 	readonly property int clockFontSize: 32
