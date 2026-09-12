@@ -49,6 +49,16 @@ Singleton {
 			? Settings.appearance.typography.display
 			: fontSizeDisplayPreset
 
+	readonly property int fontSizeLabelPreset:
+		Settings.appearance.typography.scale === "small" ? 12 :
+		Settings.appearance.typography.scale === "large" ? 16 :
+		14
+
+	readonly property int fontSizeLabel:
+		Settings.appearance.typography.label >= 0
+			? Settings.appearance.typography.label
+			: fontSizeLabelPreset
+
 	readonly property int clockFontSize:
 		Settings.clock.fontSize >= 0
 			? Settings.clock.fontSize

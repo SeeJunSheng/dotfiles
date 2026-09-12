@@ -36,6 +36,7 @@ Singleton {
 				property JsonObject typography: JsonObject {
 					property string scale: "normal"
 					property int display: -1
+					property int label: -1
 				}
 			}
 
