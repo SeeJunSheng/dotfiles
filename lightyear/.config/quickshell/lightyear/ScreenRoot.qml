@@ -6,6 +6,8 @@ Scope {
 
 	required property var modelData
 	required property AudioService audioService
+	required property NetworkingService networkingService
+	required property BluetoothService bluetoothService
 
 	property string screenName: ""
 
@@ -16,6 +18,8 @@ Scope {
 	TopRightPanel {
 		targetScreen: modelData
 		audioService: root.audioService
+		networkingService: root.networkingService
+		bluetoothService: root.bluetoothService
 	}
 
 	Component.onCompleted: {

@@ -12,6 +12,8 @@ ShellRoot {
 
 		ScreenRoot {
 			audioService: global.audioService
+			networkingService: global.networkingService
+			bluetoothService: global.bluetoothService
 		}
 	}
 }

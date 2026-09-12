@@ -6,6 +6,8 @@ PanelWindow {
 
 	required property var targetScreen
 	required property AudioService audioService
+	required property NetworkingService networkingService
+	required property BluetoothService bluetoothService
 
 	screen: targetScreen
 	implicitWidth: content.implicitWidth + Style.spacingMedium * 2
