@@ -7,19 +7,32 @@ Scope {
 	readonly property bool ready: Pipewire.ready
 
 	readonly property PwNode output: Pipewire.defaultAudioSink
-	readonly property bool hasOutput: output !== null
 
-	readonly property string outputName: !hasOutput
+	readonly property bool hasOutputDevice: root.ready
+		&& Pipewire.nodes.values.some(node =>
+			node.audio !== null
+			&& !node.isStream
+			&& node.isSink
+		)
+
+	readonly property bool hasInputDevice: root.ready
+		&& Pipewire.nodes.values.some(node =>
+			node.audio !== null
+			&& !node.isStream
+			&& !node.isSink
+		)
+
+	readonly property string outputName: output === null
 		? ""
 		: output.description.length > 0
 			? output.description
 			: output.name
 
-	readonly property real volume: hasOutput && output.ready && output.audio !== null
+	readonly property real volume: output !== null && output.ready && output.audio !== null
 		? output.audio.volume
 		: 0
 
-	readonly property bool muted: hasOutput && output.ready && output.audio !== null
+	readonly property bool muted: output !== null && output.ready && output.audio !== null
 		? output.audio.muted
 		: false
 
