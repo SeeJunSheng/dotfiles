@@ -37,5 +37,13 @@ PanelWindow {
 		AudioStatus {
 			audioService: root.audioService
 		}
+
+		NetworkStatus {
+			networkingService: root.networkingService
+		}
+
+		BluetoothStatus {
+			bluetoothService: root.bluetoothService
+		}
 	}
 }
