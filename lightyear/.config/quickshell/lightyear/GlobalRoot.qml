@@ -2,7 +2,13 @@ import Quickshell
 import QtQuick
 
 Scope {
-	AudioService {}
+	AudioService {
+		id: audio
+	}
+
+	Capabilities {
+		audioService: audio
+	}
 
 	Component.onCompleted: {
 		console.log("Lightyear global root ready")
