@@ -2,6 +2,8 @@ import Quickshell
 import QtQuick
 
 Scope {
+	id: root
+
 	required property var modelData
 	required property AudioService audioService
 
@@ -9,6 +11,11 @@ Scope {
 
 	Clock {
 		targetScreen: modelData
+	}
+
+	AudioStatus {
+		targetScreen: modelData
+		audioService: root.audioService
 	}
 
 	Component.onCompleted: {
