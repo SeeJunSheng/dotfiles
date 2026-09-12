@@ -13,7 +13,7 @@ Scope {
 		targetScreen: modelData
 	}
 
-	AudioStatus {
+	TopRightPanel {
 		targetScreen: modelData
 		audioService: root.audioService
 	}
