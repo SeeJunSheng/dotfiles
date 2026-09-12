@@ -6,6 +6,10 @@ Scope {
 		id: audio
 	}
 
+	NetworkingService {
+		id: networking
+	}
+
 	Capabilities {
 		audioService: audio
 	}
