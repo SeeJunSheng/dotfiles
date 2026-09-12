@@ -14,6 +14,9 @@ ShellRoot {
 			audioService: global.audioService
 			networkingService: global.networkingService
 			bluetoothService: global.bluetoothService
+
+			panelShortcutHeld: global.panelShortcutHeld
+			panelTargetScreenName: global.panelTargetScreenName
 		}
 	}
 }

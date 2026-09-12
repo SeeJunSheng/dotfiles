@@ -5,11 +5,17 @@ Scope {
 	id: root
 
 	required property var modelData
+	property string screenName: ""
+
 	required property AudioService audioService
 	required property NetworkingService networkingService
 	required property BluetoothService bluetoothService
 
-	property string screenName: ""
+	required property bool panelShortcutHeld
+	required property string panelTargetScreenName
+	readonly property bool panelsRaised:
+		panelShortcutHeld
+		&& panelTargetScreenName === modelData.name
 
 	Clock {
 		targetScreen: modelData
@@ -20,6 +26,8 @@ Scope {
 		audioService: root.audioService
 		networkingService: root.networkingService
 		bluetoothService: root.bluetoothService
+
+		raised: root.panelsRaised
 	}
 
 	Component.onCompleted: {

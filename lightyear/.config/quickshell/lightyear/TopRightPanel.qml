@@ -5,15 +5,18 @@ PanelWindow {
 	id: root
 
 	required property var targetScreen
+
 	required property AudioService audioService
 	required property NetworkingService networkingService
 	required property BluetoothService bluetoothService
+
+	required property bool raised
 
 	screen: targetScreen
 	implicitWidth: content.implicitWidth + Style.spacingMedium * 2
 	implicitHeight: content.implicitHeight + Style.spacingSmall * 2
 	color: "transparent"
-	aboveWindows: false
+	aboveWindows: root.raised
 	exclusionMode: ExclusionMode.Ignore
 	focusable: false
 	visible: true

@@ -117,6 +117,14 @@ hl.bind(
 )
 
 hl.bind(
+	mod .. " + P",
+	hl.dsp.global("lightyear:raisePanels"),
+	{
+		description = "Raise Lightyear panels",
+	}
+)
+
+hl.bind(
 	mod .. " + L",
 	hl.dsp.exec_cmd("hyprlock"),
 	{
