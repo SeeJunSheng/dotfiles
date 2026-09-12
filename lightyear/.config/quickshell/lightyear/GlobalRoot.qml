@@ -2,6 +2,8 @@ import Quickshell
 import QtQuick
 
 Scope {
+	readonly property AudioService audioService: audio
+
 	AudioService {
 		id: audio
 	}

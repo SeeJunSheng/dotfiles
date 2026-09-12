@@ -3,11 +3,15 @@
 import Quickshell
 
 ShellRoot {
-	GlobalRoot {}
+	GlobalRoot {
+		id: global
+	}
 
 	Variants {
 		model: Quickshell.screens
 
-		ScreenRoot {}
+		ScreenRoot {
+			audioService: global.audioService
+		}
 	}
 }

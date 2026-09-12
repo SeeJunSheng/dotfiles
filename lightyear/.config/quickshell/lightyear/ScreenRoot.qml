@@ -3,6 +3,8 @@ import QtQuick
 
 Scope {
 	required property var modelData
+	required property AudioService audioService
+
 	property string screenName: ""
 
 	Clock {
