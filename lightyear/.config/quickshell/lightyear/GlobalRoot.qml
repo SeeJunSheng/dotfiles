@@ -10,6 +10,10 @@ Scope {
 		id: networking
 	}
 
+	BluetoothService {
+		id: bluetooth
+	}
+
 	Capabilities {
 		audioService: audio
 		networkingService: networking
