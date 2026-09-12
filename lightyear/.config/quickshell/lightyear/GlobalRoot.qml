@@ -17,6 +17,7 @@ Scope {
 	Capabilities {
 		audioService: audio
 		networkingService: networking
+		bluetoothService: bluetooth
 	}
 
 	Component.onCompleted: {

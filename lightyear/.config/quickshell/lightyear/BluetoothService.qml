@@ -5,6 +5,7 @@ Scope {
 	id: root
 
 	readonly property BluetoothAdapter adapter: Bluetooth.defaultAdapter
+	readonly property bool hasAdapter: adapter !== null
 
 	readonly property bool enabled: adapter !== null
 		&& adapter.enabled
