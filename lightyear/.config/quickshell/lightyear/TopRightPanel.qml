@@ -50,6 +50,14 @@ PanelWindow {
 		}
 	}
 
+	Rectangle {
+		anchors.fill: parent
+
+		color: Style.panelBackground
+		radius: Style.panelRadius
+		opacity: root.revealed ? 1.0 : 0.0
+	}
+
 	Row {
 		id: content
 

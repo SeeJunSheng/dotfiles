@@ -4,6 +4,17 @@ import Quickshell
 import QtQuick
 
 Singleton {
+	// Colors
+
+	readonly property color panelBackground: "#aa222222"
+	readonly property color textPrimary: "white"
+
+	// Shape
+
+	readonly property int panelRadius: 16
+
+	// Spacing
+
 	readonly property int spacingSmallPreset:
 		Settings.appearance.density === "compact" ? 6 :
 		Settings.appearance.density === "spacious" ? 10 :
@@ -34,10 +45,7 @@ Singleton {
 			? Settings.appearance.spacing.large
 			: spacingLargePreset
 
-	readonly property int clockTopMargin:
-		Settings.clock.topMargin >= 0
-			? Settings.clock.topMargin
-			: spacingLarge
+	// Typography
 
 	readonly property int fontSizeDisplayPreset:
 		Settings.appearance.typography.scale === "small" ? 28 :
@@ -59,10 +67,15 @@ Singleton {
 			? Settings.appearance.typography.label
 			: fontSizeLabelPreset
 
+	// Components
+
+	readonly property int clockTopMargin:
+		Settings.clock.topMargin >= 0
+			? Settings.clock.topMargin
+			: spacingLarge
+
 	readonly property int clockFontSize:
 		Settings.clock.fontSize >= 0
 			? Settings.clock.fontSize
 			: fontSizeDisplay
-
-	readonly property color textPrimary: "white"
 }
