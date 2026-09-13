@@ -10,7 +10,10 @@ PanelWindow {
 	required property NetworkingService networkingService
 	required property BluetoothService bluetoothService
 
-	required property bool raised
+	required property bool armed
+	property bool latched: false
+	readonly property bool raised: armed || latched
+	readonly property bool revealed: latched
 
 	screen: targetScreen
 	implicitWidth: content.implicitWidth + Style.spacingMedium * 2
@@ -31,11 +34,28 @@ PanelWindow {
 		right: Style.spacingLarge
 	}
 
+	MouseArea {
+		id: activationRegion
+
+		anchors.fill: parent
+		hoverEnabled: true
+
+		onEntered: {
+			if (root.armed)
+				root.latched = true
+		}
+
+		onExited: {
+			root.latched = false
+		}
+	}
+
 	Row {
 		id: content
 
 		anchors.centerIn: parent
 		spacing: Style.spacingMedium
+		opacity: root.revealed ? 1.0 : 0.0
 
 		AudioStatus {
 			audioService: root.audioService

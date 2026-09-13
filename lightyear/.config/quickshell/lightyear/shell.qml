@@ -16,7 +16,6 @@ ShellRoot {
 			bluetoothService: global.bluetoothService
 
 			panelShortcutHeld: global.panelShortcutHeld
-			panelTargetScreenName: global.panelTargetScreenName
 		}
 	}
 }
