@@ -34,22 +34,6 @@ PanelWindow {
 		right: Style.spacingLarge
 	}
 
-	MouseArea {
-		id: activationRegion
-
-		anchors.fill: parent
-		hoverEnabled: true
-
-		onEntered: {
-			if (root.armed)
-				root.latched = true
-		}
-
-		onExited: {
-			root.latched = false
-		}
-	}
-
 	Item {
 		id: surface
 
@@ -60,6 +44,17 @@ PanelWindow {
 			NumberAnimation {
 				duration: Style.animationMedium
 				easing.type: Easing.OutCubic
+			}
+		}
+
+		HoverHandler {
+			id: panelHover
+
+			onHoveredChanged: {
+				if (hovered && root.armed)
+					root.latched = true
+				else if (!hovered)
+					root.latched = false
 			}
 		}
 
