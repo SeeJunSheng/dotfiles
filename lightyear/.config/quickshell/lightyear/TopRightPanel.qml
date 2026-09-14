@@ -50,31 +50,43 @@ PanelWindow {
 		}
 	}
 
-	Rectangle {
+	Item {
+		id: surface
+
 		anchors.fill: parent
-
-		color: Style.panelBackground
-		radius: Style.panelRadius
-		opacity: root.revealed ? 1.0 : 0.0
-	}
-
-	Row {
-		id: content
-
-		anchors.centerIn: parent
-		spacing: Style.spacingMedium
 		opacity: root.revealed ? 1.0 : 0.0
 
-		AudioStatus {
-			audioService: root.audioService
+		Behavior on opacity {
+			NumberAnimation {
+				duration: Style.animationMedium
+				easing.type: Easing.OutCubic
+			}
 		}
 
-		NetworkStatus {
-			networkingService: root.networkingService
+		Rectangle {
+			anchors.fill: parent
+
+			color: Style.panelBackground
+			radius: Style.panelRadius
 		}
 
-		BluetoothStatus {
-			bluetoothService: root.bluetoothService
+		Row {
+			id: content
+
+			anchors.centerIn: parent
+			spacing: Style.spacingMedium
+
+			AudioStatus {
+				audioService: root.audioService
+			}
+
+			NetworkStatus {
+				networkingService: root.networkingService
+			}
+
+			BluetoothStatus {
+				bluetoothService: root.bluetoothService
+			}
 		}
 	}
 }

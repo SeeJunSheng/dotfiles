@@ -67,6 +67,10 @@ Singleton {
 			? Settings.appearance.typography.label
 			: fontSizeLabelPreset
 
+	// Motion
+
+	readonly property int animationMedium: 300
+
 	// Components
 
 	readonly property int clockTopMargin:
